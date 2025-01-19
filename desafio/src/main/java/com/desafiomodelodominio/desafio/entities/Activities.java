@@ -2,13 +2,16 @@ package com.desafiomodelodominio.desafio.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "tb_activities")
 public class Activities {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     private String name;
 
@@ -19,6 +22,9 @@ public class Activities {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+
+    @OneToMany(mappedBy = "activitie")
+    private List<Block> blocks = new ArrayList<>();
 
     public Activities() {}
 
@@ -62,6 +68,7 @@ public class Activities {
         this.price = price;
     }
 
-
-
+    public List<Block> getBlocks() {
+        return blocks;
+    }
 }
