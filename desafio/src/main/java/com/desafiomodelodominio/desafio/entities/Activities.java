@@ -3,7 +3,9 @@ package com.desafiomodelodominio.desafio.entities;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_activities")
@@ -25,6 +27,12 @@ public class Activities {
 
     @OneToMany(mappedBy = "activitie")
     private List<Block> blocks = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(name = "tb_activities_participants",
+                joinColumns = @JoinColumn(name = "activities_id"),
+                inverseJoinColumns = @JoinColumn(name = "particippants_id"))
+    private Set<Participants> participants = new HashSet<>();
 
     public Activities() {}
 
@@ -70,5 +78,9 @@ public class Activities {
 
     public List<Block> getBlocks() {
         return blocks;
+    }
+
+    public Set<Participants> getParticipants() {
+        return participants;
     }
 }
