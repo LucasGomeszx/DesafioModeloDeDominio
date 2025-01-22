@@ -19,7 +19,7 @@ public class Block {
     private Instant finish;
 
     @ManyToOne
-    @JoinColumn(name = "activitie_id")
+    @JoinColumn(name = "activities_id")
     private Activities activitie;
 
     public Block() {}

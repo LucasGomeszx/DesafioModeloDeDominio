@@ -31,7 +31,7 @@ public class Activities {
     @ManyToMany
     @JoinTable(name = "tb_activities_participants",
                 joinColumns = @JoinColumn(name = "activities_id"),
-                inverseJoinColumns = @JoinColumn(name = "particippants_id"))
+                inverseJoinColumns = @JoinColumn(name = "participants_id"))
     private Set<Participants> participants = new HashSet<>();
 
     public Activities() {}
